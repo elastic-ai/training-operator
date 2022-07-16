@@ -896,3 +896,12 @@ func (r *TFJobReconciler) onOwnerCreateFunc() func(event.CreateEvent) bool {
 		return true
 	}
 }
+
+func (jc *TFJobReconciler) JobSuspended(job interface{}) (*bool, error) {
+	tfJob, ok := job.(*kubeflowv1.TFJob)
+	if !ok {
+		return nil, fmt.Errorf("%v is not a type of TFJob", tfJob)
+	}
+
+	return tfJob.Spec.Suspend, nil
+}
