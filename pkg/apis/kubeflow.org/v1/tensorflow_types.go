@@ -89,6 +89,17 @@ type TFJobSpec struct {
 
 	// A switch to enable dynamic worker
 	EnableDynamicWorker bool `json:"enableDynamicWorker,omitempty"`
+
+	// Suspend specifies whether the Job controller should create Pods or not. If
+	// a Job is created with suspend set to true, no Pods are created by the Job
+	// controller. If a Job is suspended after creation (i.e. the flag goes from
+	// false to true), the Job controller will delete all active Pods associated
+	// with this Job. Users must design their workload to gracefully handle this.
+	// Suspending a Job will reset the StartTime field of the Job, effectively
+	// resetting the ActiveDeadlineSeconds timer too. Defaults to false.
+	//
+	// +optional
+	Suspend *bool `json:"suspend,omitempty"`
 }
 
 // SuccessPolicy is the success policy.

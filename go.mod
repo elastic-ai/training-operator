@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/go-logr/logr v1.2.3
-	github.com/kubeflow/common v0.4.2
+	github.com/kubeflow/common v0.0.0
 	github.com/onsi/ginkgo/v2 v2.1.4
 	github.com/onsi/gomega v1.19.0
 	github.com/prometheus/client_golang v1.12.1
@@ -87,4 +87,8 @@ require (
 	k8s.io/klog/v2 v2.60.1 // indirect
 	sigs.k8s.io/json v0.0.0-20220525155127-227cbc7cc124 // indirect
 	sigs.k8s.io/structured-merge-diff/v4 v4.2.1 // indirect
+)
+
+replace (
+	 github.com/kubeflow/common => github.com/elastic-ai/common master
 )
